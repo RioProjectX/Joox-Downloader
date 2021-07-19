@@ -1,0 +1,54 @@
+{
+  "name": "Inline-MP3",
+  "description": "Telegram bot untuk mendownload mp3 menggunakan unofficial joox API",
+  "keywords": [
+    "telegram",
+    "joox",
+    "mp3",
+    "bot"
+  ],
+  "repository": "https://github.com/Tokai-Robo/inline-mp3",
+  "success_url": "https://t.me/TokaiUpdate",
+  "website": "https://github.com/Tokai-Robo",
+  "env": {
+    "APP_NAME": {
+      "description": "Nama app yang kamu isi paling atas",
+      "value": ""
+    },
+    "PORT": {
+      "description": "Jangan diubah jika kamu tidak paham",
+      "value": "8443"
+    },
+    "CHANNEL_USERNAME": {
+      "description": "Username channel update kamu, tanpa menggunakan @",
+      "value": ""
+    },
+    "OWNER_USERNAME": {
+      "description": "Username kamu, tanpa menggunakan @",
+      "value": ""
+    },
+    "GROUP_USERNAME": {
+      "description": "Username group support kamu, tanpa menggunakan @",
+      "value": ""
+    },
+    "DONATE_LINK": {
+      "description": "Link donate kalian",
+      "value": ""
+    },
+    "BOT_TOKEN": {
+      "description": "Telegram bot token, dapatkan dari @botfather ",
+      "value": ""
+    }
+  },
+  "buildpacks": [
+      {
+        "url": "heroku/python"
+      }
+    ],
+  "formation": {
+    "web": {
+        "quantity": 1,
+        "size": "free"
+    }
+  }
+}
