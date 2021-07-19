@@ -11,7 +11,7 @@ class Config(object):
     BOT_TOKEN = os.environ.get('BOT_TOKEN', '')
     START_TEXT = """_Hai_ *{}*, _aku adalah_ *{}*, _Aku berfungsi untuk mendownload lagu yang kalian suka dengan menggunakan fitur inline mode. Ketuk tombol bantuan dibawah untuk melihat panduanku._"""
     BOT_TEXT = """🧑🏻‍💻 *Developer :* [Tokai](t.me/tokai)
-🤖 *Nama Bot :* [CleverMp3](https://t.me/CleverBot)
+🤖 *Nama Bot :* [Clever-Mp3](https://t.me/CleverMp3_Bot)
 
 📝 *Bahasa : * [Python3](https://www.python.org)
 
