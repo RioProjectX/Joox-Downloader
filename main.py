@@ -19,38 +19,48 @@ logger = logging.getLogger(__name__)
 
 
 def inline(update, context):
+    q.id = update.inline_query.id
     query = update.inline_query.query
     jo = query.replace(' ','%20')
     hasil = []
-    if query:
-        response = r.get(f'https://api.zeks.xyz/api/joox?apikey=JIzJ6hEHEcjsojbYEjhV9nzJ82D&q={jo}').json()
-        result = response.get('data')
-        if result is not None:
-            for x in result:
-                judul = x.get('judul')
-                artis = x.get('artist')
-                musik = x.get('audio')
-                teks_judul = '{} - {}'
-                teks = '🎼_Powered by joox_'
-                hasil.append(InlineQueryResultAudio(
-                    id=uuid4(),
-                    audio_url=musik,
-                    title=teks_judul.format(judul, artis),
-                    caption=teks,
-                    parse_mode=ParseMode.MARKDOWN
-                )
-            )
-            update.inline_query.answer(
-                results=hasil,
-                timeout=60,
-                auto_pagination=True
-            )
-        else:
-            print('None')
-            return
+    if not query:
+        context.bot.answer_inline_query(
+            inline_query_id = q.id,
+            results = hasil,
+            switch_pm_text = 'Masukkan judul lagu!',
+            switch_pm_parameter = 'help',
+            cache_time = 0
+        )
     else:
-        print('None')
-        return
+        try:
+            response = r.get(f'https://api.zeks.xyz/api/joox?apikey=JIzJ6hEHEcjsojbYEjhV9nzJ82D&q={jo}').json()
+            result = response.get('data')
+            if result is not None:
+                for x in result:
+                    judul = x.get('judul')
+                    artis = x.get('artist')
+                    musik = x.get('audio')
+                    teks_judul = '{} - {}'
+                    teks = '🎼_Powered by joox_'
+                    hasil.append(InlineQueryResultAudio(
+                        id=uuid4(),
+                        audio_url = musik,
+                        title = teks_judul.format(judul, artis),
+                        caption = teks,
+                        parse_mode = ParseMode.MARKDOWN
+                    )
+                )
+                update.inline_query.answer(results = hasil, cache_time = 0)
+            else:
+                context.bot.answer_inline_query(
+                    inline_query_id = q.id,
+                    results = hasil,
+                    switch_pm_text = 'Tidak menemukan hasil, cari lagi!',
+                    switch_pm_parameter = 'help',
+                    cache_time = 0
+                )
+        except:
+            pass
 
 def main():
     updater = Updater(Config.BOT_TOKEN, use_context=True)
