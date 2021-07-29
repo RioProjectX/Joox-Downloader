@@ -23,7 +23,7 @@ def inline(update, context):
     query = update.inline_query.query
     jo = query.replace(' ','%20')
     hasil = []
-    if not query:
+    if query == '':
         context.bot.answer_inline_query(
             inline_query_id = q.id,
             results = hasil,
