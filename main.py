@@ -3,7 +3,7 @@ import requests as r
 import logging
 from uuid import uuid4
 
-from telegram import InlineQueryResultAudio, ParseMode
+from telegram import InlineQueryResultAudio
 from telegram.ext import Updater, InlineQueryHandler
 
 from configs import Config
@@ -19,11 +19,11 @@ logger = logging.getLogger(__name__)
 
 
 def inline(update, context):
-    q.id = update.inline_query.id
-    query = update.inline_query.query
-    jo = query.replace(' ','%20')
+    query = update.inline_query
+    q.query = query.query
     hasil = []
-    if query == '':
+    if q.query == '':
+        q.id = query.id
         context.bot.answer_inline_query(
             inline_query_id = q.id,
             results = hasil,
@@ -33,38 +33,26 @@ def inline(update, context):
         )
     else:
         try:
+            jo = q.query.replace(' ','%20')
             response = r.get(f'https://api.zeks.xyz/api/joox?apikey=JIzJ6hEHEcjsojbYEjhV9nzJ82D&q={jo}').json()
             result = response.get('data')
-            if result is not None:
-                for x in result:
-                    judul = x.get('judul')
-                    artis = x.get('artist')
-                    musik = x.get('audio')
-                    teks_judul = '{} - {}'
-                    teks = '🎼_Powered by joox_'
-                    hasil.append(InlineQueryResultAudio(
-                        id=uuid4(),
-                        audio_url = musik,
-                        title = teks_judul.format(judul, artis),
-                        caption = teks,
-                        parse_mode = ParseMode.MARKDOWN
-                    )
+            for x in result:
+                judul = x.get('judul')
+                artis = x.get('artist')
+                musik = x.get('audio')
+                teks_judul = '{} - {}'
+                hasil.append(InlineQueryResultAudio(
+                    id = uuid4(),
+                    audio_url = musik,
+                    title = teks_judul.format(judul, artis)
                 )
-                update.inline_query.answer(results = hasil, cache_time = 0)
-            else:
-                context.bot.answer_inline_query(
-                    inline_query_id = q.id,
-                    results = hasil,
-                    switch_pm_text = 'Tidak menemukan hasil, cari lagi!',
-                    switch_pm_parameter = 'help',
-                    cache_time = 0
-                )
+            )
+            update.inline_query.answer(results = hasil, cache_time = 0)
         except:
             pass
 
 def main():
     updater = Updater(Config.BOT_TOKEN, use_context=True)
-
     dispatcher = updater.dispatcher
 
     # command dengan handler
