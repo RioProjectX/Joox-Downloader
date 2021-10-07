@@ -9,7 +9,7 @@
   ],
   "repository": "https://github.com/RioProjectX/Joox-Downloader",
   "success_url": "https://t.me/fckualot",
-  "website": "https://github.com/RioProjectX",
+  "website": "https://github.com/RioProjectX/Joox-Downloader",
   "env": {
     "APP_NAME": {
       "description": "Nama app yang kamu isi paling atas",
