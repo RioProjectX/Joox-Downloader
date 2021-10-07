@@ -10,7 +10,7 @@ class Config(object):
     DONATE_LINK = os.environ.get('DONATE_LINK', '')
     BOT_TOKEN = os.environ.get('BOT_TOKEN', '')
     START_TEXT = """_Hai_ *{}*, _aku adalah_ *{}*, _Aku berfungsi untuk mendownload lagu yang kalian suka dengan menggunakan fitur inline mode. Ketuk tombol bantuan dibawah untuk melihat panduanku._"""
-    BOT_TEXT = """🧑🏻‍💻 *Developer :* [Tokai](t.me/fckualot)
+    BOT_TEXT = """🧑🏻‍💻 *Developer :* [Rio Imut](t.me/fckualot)
 
 🤖 *Nama Bot :* [Joox](https://t.me/jooxdownloader)
 
