@@ -1,5 +1,5 @@
 {
-  "name": "Inline-MP3",
+  "name": "Joox Inline-MP3",
   "description": "Telegram bot untuk mendownload mp3 menggunakan unofficial joox API",
   "keywords": [
     "telegram",
@@ -7,9 +7,9 @@
     "mp3",
     "bot"
   ],
-  "repository": "https://github.com/Tokai-Robo/inline-mp3",
-  "success_url": "https://t.me/TokaiUpdate",
-  "website": "https://github.com/Tokai-Robo",
+  "repository": "https://github.com/RioProjectX/Joox-Downloader",
+  "success_url": "https://t.me/fckualot",
+  "website": "https://github.com/RioProjectX",
   "env": {
     "APP_NAME": {
       "description": "Nama app yang kamu isi paling atas",
