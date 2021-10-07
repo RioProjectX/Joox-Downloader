@@ -17,8 +17,8 @@ START_KEY = InlineKeyboardMarkup(
             InlineKeyboardButton(text='Bantuan 📚', callback_data='help_cmd')
         ],
         [
-            InlineKeyboardButton(text='🔊 Group', url='t.me/{}'.format(Config.GROUP_USERNAME)),
-            InlineKeyboardButton(text='Channel 🔔', url='t.me/{}'.format(Config.CHANNEL_USERNAME))
+            InlineKeyboardButton(text='📣 Group', url='t.me/{}'.format(Config.GROUP_USERNAME)),
+            InlineKeyboardButton(text='📣 Channel', url='t.me/{}'.format(Config.CHANNEL_USERNAME))
         ],
         [
             InlineKeyboardButton(text='About Bot 🤖', callback_data='bot_cmd')
@@ -29,7 +29,7 @@ START_KEY = InlineKeyboardMarkup(
 HELP_KEY = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton(text='🔍 Source Code', url='https://github.com/Tokai-Robo/inline-mp3'),
+            InlineKeyboardButton(text='💻 Developer', url='https://t.me/fckualot'),
             InlineKeyboardButton(text='About Bot 🤖', callback_data='bot_cmd')
         ],
         [
